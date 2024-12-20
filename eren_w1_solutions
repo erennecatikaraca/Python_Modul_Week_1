@@ -1,0 +1,269 @@
+# 1
+
+for i in range(1,11):
+    print(i)
+    
+# 2
+
+while(True):
+    try:
+        number = int(input("please enter a number: "))
+        break
+    except ValueError:
+        print("that's not a number!")
+
+print("----for loop----")
+for i in range(number):
+     if i % 2 == 0:
+         print(i)
+
+print("----while loop----")
+counter = 0
+while(counter < number):
+    if counter % 2 == 0:
+        print(counter)
+    counter += 1
+    
+# 3
+
+while(True):
+    try:
+        startNumber = int(input("Please enter a starting number: ")) 
+        endNumber = int(input("Please enter a ending number: "))
+
+        if startNumber > endNumber:
+            print("starting number can not be bigger than ending number!")
+        else:
+            break
+
+    except ValueError:
+        print("one of them is not a number!")
+
+
+
+for i in range(startNumber, endNumber+1):
+            print(i)
+            
+# 4
+
+while(True):
+    try:
+        number = int(input("please enter a number: "))
+        break
+    except ValueError:
+        print("that's not a number!")
+
+if number % 2 ==0:
+    print("this number is even")
+else:
+    print("this number is odd")
+
+# 5
+
+while(True):
+    try:
+        number = int(input("please enter a positive number: "))
+
+        if number<0:
+            print("that's not a positive number!")
+        else:
+            break
+        
+    except ValueError:
+        print("thats not a number!")
+
+counter = 1
+
+for i in range(1, number+1):
+    counter =+ i*counter
+
+print(counter)
+
+# 6
+
+while(True):
+    try:
+        number  =  int(input("please enter a number: "))
+        break
+    except ValueError:
+        print("that's not a number!")
+        
+counter = 0 
+for i in range(2,number):
+    value = number % i == 0
+    if value:
+        counter = 1
+        break
+
+if counter == 1 or number != 2:
+    print(f"this number is NOT a prime number: {number}")
+
+else:
+    print(f"this number is a prime number: {number}")
+    
+# 7
+
+
+while(True):
+    try:
+        limit = int(input("please enter a number that you want for Fibonacci: "))
+        break
+    except ValueError:
+        print("that's not a number!")
+
+
+fib_list=[0,1]
+
+while True:
+    if fib_list[-1]<limit:
+        fib_list.append(fib_list[-1]+fib_list[-2])
+    else:
+        fib_list.pop()
+        break
+
+print(*fib_list)
+
+# 8
+
+word = input("please enter a word: ")
+
+print(f"reversed word: {word[::-1]}")
+
+# 9
+
+word = input("please enter a word: ")
+
+if word == word[::-1]:
+    print(f"'{word}' this word is a palindrome")
+else:
+    print(f"'{word}' this word is not a palindrome")
+
+# 10
+
+while True:
+    try:
+        height = input("please enter your height (for example:1.80): ")
+        weight = int(input("please enter your weight (for example:80): "))
+        if "." not in height:
+            print("Please enter a value as shown in the example!")
+        else:
+            height = float(height)
+            break
+    except ValueError:
+        print("Please enter a value as shown in the example!")
+
+
+h_square = height**2
+w_index = weight/h_square
+
+
+def calculating():
+    if w_index < 25:
+        print(f"Your body mass index is underweight - BMI: {w_index}")
+    elif 25 < w_index < 30:
+        print(f"Your body mass index is normal - BMI: {w_index}")
+    elif w_index > 30:
+        print(f'Your body mass index is overweight - BMI: {w_index}')
+
+calculating()
+
+# 10
+
+while True:
+    try:
+        height = input("please enter your height (for example:1.80): ")
+        weight = int(input("please enter your weight (for example:80): "))
+        if "." not in height:
+            print("Please enter a value as shown in the example!")
+        else:
+            height = float(height)
+            break
+    except ValueError:
+        print("Please enter a value as shown in the example!")
+
+
+h_square = height**2
+w_index = weight/h_square
+
+
+def calculating():
+    if w_index < 25:
+        print(f"Your body mass index is underweight - BMI: {w_index}")
+    elif 25 < w_index < 30:
+        print(f"Your body mass index is normal - BMI: {w_index}")
+    elif w_index > 30:
+        print(f'Your body mass index is overweight - BMI: {w_index}')
+
+calculating()
+
+# 11
+
+while True: 
+    try:
+        number1= int(input("please enter the first number: "))
+        number2= int(input("please enter the second number: "))
+        number3= int(input("please enter the third number: "))
+        break
+    except ValueError:
+        print("You did not enter a number. Please try again")
+
+Liste = [number1,number2,number3]
+
+print(f"the largest number you entered {max(Liste)}")
+
+# 12
+
+def getSubjects():
+    subjectNames = []
+    for i in range(1,5):
+        names = input(f"please enter the {i}. subject name: ")
+        subjectNames.append(names)
+    return subjectNames
+
+SubNames = getSubjects()
+
+def getGrades(SubNames):
+    sub_grades = {}
+    for i in range(len(SubNames)):
+        while(True):
+            try:
+                midterm = int(input(f"please enter the midterm grade of the {SubNames[i]}: "))
+                final = int(input(f"please enter the final grade of the {SubNames[i]}: "))
+                if midterm  < 0 or midterm  > 100 or final < 0 or final > 100:
+                    print("grades must be between 0-100!")
+                else:
+                    break
+            except ValueError:
+                print("thats not a valid number. Please try again!")
+        sub_grades[SubNames[i]] = [midterm ,final]
+    return sub_grades
+
+subjectsAndGrades = getGrades(SubNames)
+
+def calculating(subjectAndGrades):
+    resultDic={}
+    for subject, grades in subjectAndGrades.items():
+        result = (grades[0]*40)/100 + (grades[1]*60)/100
+        if result < 50:
+            result = "FAILED"
+        elif result >= 50:
+            result = "SUCCESFULL"
+
+        resultDic[subject] = result
+    return resultDic
+
+result = calculating(subjectsAndGrades)
+
+for subject, assesment in result.items():
+    print(f"{subject} : {assesment}")
+
+
+
+
+
+    
+
+
+
+
+ 
